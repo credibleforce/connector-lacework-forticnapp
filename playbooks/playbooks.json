@@ -1,0 +1,1106 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@context": "/api/3/contexts/WorkflowCollection",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Lacework FortiCNAPP - 1.0.0",
+      "description": "Sample playbooks for \"Lacework FortiCNAPP\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": null,
+      "id": 218,
+      "createDate": 1724670089.847462,
+      "modifyDate": 1724670089.847462,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Lacework"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Add Comment to Alert",
+          "aliasName": null,
+          "tag": "#Lacework",
+          "description": "Adds a user comment on an alert’s timeline based on the alert ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1724751561,
+          "collection": "/api/3/workflow_collections/1180a7f6-2978-4a0f-aa61-2dad9b0e1e7a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/b739aaad-f949-405c-870b-7d4b6ead731e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Add Comment to Alert",
+              "description": null,
+              "arguments": {
+                "name": "Lacework FortiCNAPP",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-forticnapp",
+                "operation": "add_comment_to_alert",
+                "operationTitle": "Add Comment to Alert"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "b39d6a5c-7d6e-4fd9-b79d-ad0cd2167a8e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "908a09c1-7f85-476a-bc2c-9cf1a1d5ec3b",
+                "title": "Lacework FortiCNAPP: Add Comment to Alert",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "b739aaad-f949-405c-870b-7d4b6ead731e"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Add Comment to Alert",
+              "targetStep": "/api/3/workflow_steps/b39d6a5c-7d6e-4fd9-b79d-ad0cd2167a8e",
+              "sourceStep": "/api/3/workflow_steps/b739aaad-f949-405c-870b-7d4b6ead731e",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "f5d513a5-1c08-4c1e-bf24-46128d858294"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "035ef591-0f79-43ba-8a31-c4af7780cec8",
+          "id": 3248,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Lacework",
+            "lacework-forticnapp"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Close Alert",
+          "aliasName": null,
+          "tag": "#Lacework",
+          "description": "Updates the status of an alert to closed. Note that a closed alert cannot be reopened.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1724751553,
+          "collection": "/api/3/workflow_collections/1180a7f6-2978-4a0f-aa61-2dad9b0e1e7a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f3cd0681-7966-4d00-9daa-bc85bf65d4d1",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Close Alert",
+              "description": null,
+              "arguments": {
+                "name": "Lacework FortiCNAPP",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-forticnapp",
+                "operation": "close_alert",
+                "operationTitle": "Close Alert"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "b21c13b6-6c42-439a-8391-3f59200fcf8a"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "5437c0da-bfeb-4eac-9370-c86f16ec6ab2",
+                "title": "Lacework FortiCNAPP: Close Alert",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "f3cd0681-7966-4d00-9daa-bc85bf65d4d1"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Close Alert",
+              "targetStep": "/api/3/workflow_steps/b21c13b6-6c42-439a-8391-3f59200fcf8a",
+              "sourceStep": "/api/3/workflow_steps/f3cd0681-7966-4d00-9daa-bc85bf65d4d1",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "5c2426e0-f6a8-4fbe-9ef6-fb1e3a44da9d"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "0b8b3681-aabe-4b91-a990-70af8174958d",
+          "id": 3249,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Lacework",
+            "lacework-forticnapp"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search Alerts",
+          "aliasName": null,
+          "tag": "#Lacework",
+          "description": "Retrieves a detailed list of alerts based on filters like alert ID, start time, alert type, severity, status, etc.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1724751544,
+          "collection": "/api/3/workflow_collections/1180a7f6-2978-4a0f-aa61-2dad9b0e1e7a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/65386e1b-df1a-41ac-a51a-be39c0be8ad4",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Search Alerts",
+              "description": null,
+              "arguments": {
+                "name": "Lacework FortiCNAPP",
+                "config": "ba8493f6-43ae-42d5-9ced-efb30060febe",
+                "params": {
+                  "alertId": "",
+                  "endTime": "",
+                  "returns": "",
+                  "alertType": "",
+                  "startTime": ""
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-forticnapp",
+                "operation": "search_alerts",
+                "operationTitle": "Search Alerts",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "160",
+              "left": "320",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "18ef5bbe-da7d-4d88-815d-e85cb6bab2a7"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ee72b684-09ef-4257-85e4-db03577edfef",
+                "title": "Lacework FortiCNAPP: Search Alerts",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "65386e1b-df1a-41ac-a51a-be39c0be8ad4"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Search Alerts",
+              "targetStep": "/api/3/workflow_steps/18ef5bbe-da7d-4d88-815d-e85cb6bab2a7",
+              "sourceStep": "/api/3/workflow_steps/65386e1b-df1a-41ac-a51a-be39c0be8ad4",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "8696d66c-a982-4650-a484-491c8bc2f43e"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "1bf72009-92a7-44e0-88bc-09276bec0d33",
+          "id": 3250,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Lacework",
+            "lacework-forticnapp"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Alerts Details",
+          "aliasName": null,
+          "tag": "#Lacework",
+          "description": "Retrieves details about an alert based on the alert ID and scope you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1724751536,
+          "collection": "/api/3/workflow_collections/1180a7f6-2978-4a0f-aa61-2dad9b0e1e7a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9ed7605f-356f-4ac2-9fda-d1e268121aa5",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Alerts Details",
+              "description": null,
+              "arguments": {
+                "name": "Lacework FortiCNAPP",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-forticnapp",
+                "operation": "get_alert_details",
+                "operationTitle": "Get Alerts Details"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "68fe4c8f-12ff-45b4-93e3-dfa03df0fdf2"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "99b1b3cf-4c3c-4b79-9dd7-378151c3b77e",
+                "title": "Lacework FortiCNAPP: Get Alerts Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "9ed7605f-356f-4ac2-9fda-d1e268121aa5"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Alerts Details",
+              "targetStep": "/api/3/workflow_steps/68fe4c8f-12ff-45b4-93e3-dfa03df0fdf2",
+              "sourceStep": "/api/3/workflow_steps/9ed7605f-356f-4ac2-9fda-d1e268121aa5",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "2e8ae938-1d4c-4427-8f97-5234b2f8cd05"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "48849b7c-45af-45eb-9ed5-05d56bd7c6d2",
+          "id": 3251,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Lacework",
+            "lacework-forticnapp"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Alert Entities",
+          "aliasName": null,
+          "tag": "#Lacework",
+          "description": "Retrieves a list of all entities associated with a specified alert ID for which additional context is available. The entity can be any non-compliant resource, such as a machine or IP address.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1724751528,
+          "collection": "/api/3/workflow_collections/1180a7f6-2978-4a0f-aa61-2dad9b0e1e7a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3984f77c-9496-4ed0-9317-06f292ddd955",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Alert Entities",
+              "description": null,
+              "arguments": {
+                "name": "Lacework FortiCNAPP",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-forticnapp",
+                "operation": "get_alert_entities",
+                "operationTitle": "Get Alert Entities"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ff683fe1-aff3-4e1f-9b6d-b2ed2b402a0e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "b4325364-861e-4fd3-b7fc-f6a053d59154",
+                "title": "Lacework FortiCNAPP: Get Alert Entities",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "3984f77c-9496-4ed0-9317-06f292ddd955"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Alert Entities",
+              "targetStep": "/api/3/workflow_steps/ff683fe1-aff3-4e1f-9b6d-b2ed2b402a0e",
+              "sourceStep": "/api/3/workflow_steps/3984f77c-9496-4ed0-9317-06f292ddd955",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "c3b4a656-35ad-4f36-a2b9-6f3232360804"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "57e2abf0-88f1-4d42-a794-22a456333f32",
+          "id": 3252,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Lacework",
+            "lacework-forticnapp"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Lacework FortiCNAPP > Ingest",
+          "aliasName": null,
+          "tag": "#lacework #ingest #dataingestion #create",
+          "description": "Ingests security alerts from Lacework.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1724821365,
+          "collection": "/api/3/workflow_collections/1180a7f6-2978-4a0f-aa61-2dad9b0e1e7a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/899642bd-e417-4bea-afee-4e03f26c0a0d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch and Create",
+              "description": null,
+              "arguments": {
+                "arguments": [],
+                "apply_async": false,
+                "step_variables": [],
+                "pass_input_record": true,
+                "workflowReference": "/api/3/workflows/cbb32c59-aaf6-455b-97ec-e20771f2d241"
+              },
+              "status": null,
+              "top": "160",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+              "group": null,
+              "uuid": "2c290c08-5605-4ae6-829e-df5a6da88d17"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "899642bd-e417-4bea-afee-4e03f26c0a0d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Last Pull Time",
+              "description": null,
+              "arguments": {
+                "config": "32a9a084-8135-41bb-8649-569c45d80505",
+                "params": {
+                  "macro": "{{vars.steps.Fetch_and_Create.macro_name}}",
+                  "value": "{{vars.steps.Fetch_and_Create.updated_last_pull_time}}"
+                },
+                "version": "3.2.3",
+                "connector": "cyops_utilities",
+                "operation": "updatemacro",
+                "operationTitle": "CyOPs: Update Macro",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "e3000672-2c9d-45ee-b8ca-464f961832d9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Fetch and Create -> Update Last Alert Fetch Macro",
+              "targetStep": "/api/3/workflow_steps/e3000672-2c9d-45ee-b8ca-464f961832d9",
+              "sourceStep": "/api/3/workflow_steps/2c290c08-5605-4ae6-829e-df5a6da88d17",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "a56c750c-8bba-4710-8151-67d2bac76bf8"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Fetch Alerts",
+              "targetStep": "/api/3/workflow_steps/2c290c08-5605-4ae6-829e-df5a6da88d17",
+              "sourceStep": "/api/3/workflow_steps/899642bd-e417-4bea-afee-4e03f26c0a0d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "b15ce883-8d88-4fa5-b9b3-237bfb867b7a"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "59f5346e-d3c9-489b-9ef2-78bdeddce4b8",
+          "id": 3253,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "dataingestion",
+            "fortinet-forticnapp",
+            "ingest",
+            "Lacework",
+            "lacework-forticnapp"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Lacework FortiCNAPP > Fetch and Create",
+          "aliasName": null,
+          "tag": "#lacework #fetch #dataingestion",
+          "description": "Fetches Alerts from Lacework and Creates records in FortiSOAR.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1724821562,
+          "collection": "/api/3/workflow_collections/1180a7f6-2978-4a0f-aa61-2dad9b0e1e7a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/63fa366c-183b-4ccc-85bb-cab3b02ecc83",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Configuration",
+              "description": null,
+              "arguments": {
+                "source": "",
+                "status": "",
+                "category": "",
+                "severity": "",
+                "alertType": "",
+                "subCategory": "",
+                "pullTimeMacro": "LaceworkLastPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}",
+                "start_datetime": "",
+                "alerts_status_map": "{'Open': {{'AlertStatus'| picklist('Open') }},'InProgress': {{'AlertStatus'| picklist('Investigating') }}, 'Closed': {{'AlertStatus'| picklist('Closed') }}}",
+                "alerts_severity_map": "{'Info': {{'Severity'| picklist('Minimal') }}, 'Low': {{'Severity'| picklist('Low') }}, 'Medium': {{'Severity'| picklist('Medium') }}, 'High': {{'Severity'| picklist('High') }}, 'Critical': {{'Severity'| picklist('Critical') }}}"
+              },
+              "status": null,
+              "top": "165",
+              "left": "300",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "f8702645-f5f8-4338-a5a4-a36d8517bfb7"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Record",
+              "description": null,
+              "arguments": {
+                "config": "7589528d-2589-4576-bb8f-4c651224751a",
+                "version": "1.0.1",
+                "for_each": {
+                  "item": "{{vars.record_data}}",
+                  "__bulk": true,
+                  "parallel": false,
+                  "condition": "",
+                  "batch_size": 100
+                },
+                "resource": {
+                  "name": "{{vars.item.alertId}}:{{vars.item.alertName}}",
+                  "type": "/api/3/picklists/574a6ee2-7265-4701-815e-cff83b053bce",
+                  "state": "/api/3/picklists/a1bac09b-1441-45aa-ad1b-c88744e48e72",
+                  "source": "Lacework FortiCNAPP",
+                  "status": "{{vars.item.status | resolveRange(vars.alerts_status_map)}}",
+                  "severity": "{{vars.item.severity | resolveRange(vars.alerts_severity_map)}}",
+                  "sourceId": "{{vars.item.alertId}}",
+                  "__replace": "true",
+                  "sourcedata": "{{vars.item | toJSON }}",
+                  "description": "{{vars.item.alertInfo.subject}}\n\nPolicy ID:\t{{vars.item.policyId}}\n\nReachability: {{vars.item.reachability}}\n\nDerived Fields:\n- Source: {{vars.item.derivedFields.source}}\n- Category:\t{{vars.item.derivedFields.category}}\n- Sub Category: {{vars.item.derivedFields['sub_category']}}\n\nInternet Exposure: {{vars.item.internetExposure}}",
+                  "ackSlaStatus": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",
+                  "respSlaStatus": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",
+                  "priorityWeight": 1,
+                  "escalatedtoincident": "/api/3/picklists/2128a09c-153d-4db3-985d-de6be33deae5",
+                  "resolvedAutomatedly": false,
+                  "alertRemainingAckSLA": 0
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/alerts",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "975",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "4f134a86-39e2-4a02-a433-8dd37ea6f0f0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Extract Value From Response",
+              "description": null,
+              "arguments": {
+                "last_pull_time": "{% if (vars.steps.Get_Macro_Value.data[\"hydra:member\"] | length) < 1%}{{vars.start_datetime}}{% else %}{{vars.steps.Get_Macro_Value.data['hydra:member'][0]['value']}}{% endif %}",
+                "current_timestamp": "{{arrow.get(arrow.utcnow().int_timestamp).strftime('%Y-%m-%dT%H:%M:%S.%fZ')}}"
+              },
+              "status": null,
+              "top": "435",
+              "left": "300",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "38a59708-9a91-4058-87c6-f576d7d5dbeb"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Alerts",
+              "description": null,
+              "arguments": {
+                "name": "Lacework FortiCNAPP",
+                "config": "ba8493f6-43ae-42d5-9ced-efb30060febe",
+                "params": {
+                  "source": "{{vars.source}}",
+                  "status": "{{vars.status}}",
+                  "alertId": "",
+                  "endTime": "",
+                  "returns": "",
+                  "category": "{{vars.category}}",
+                  "severity": "{{vars.severity}}",
+                  "alertType": "{{vars.alertType}}",
+                  "startTime": "{{vars.last_pull_time}}",
+                  "subCategory": "{{vars.subCategory}}"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-forticnapp",
+                "operation": "search_alerts",
+                "operationTitle": "Search Alerts",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "705",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "5866d3a4-f5d2-4d9b-aaed-7cc42c7233a4"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Sample Alerts",
+              "description": null,
+              "arguments": {
+                "name": "Lacework FortiCNAPP",
+                "config": "ba8493f6-43ae-42d5-9ced-efb30060febe",
+                "params": {
+                  "source": "{{vars.source}}",
+                  "status": "{{vars.status}}",
+                  "alertId": "",
+                  "endTime": "",
+                  "returns": "",
+                  "category": "{{vars.category}}",
+                  "severity": "{{vars.severity}}",
+                  "alertType": "{{vars.alertType}}",
+                  "startTime": "{{vars.last_pull_time}}",
+                  "subCategory": "{{vars.subCategory}}"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-forticnapp",
+                "operation": "search_alerts",
+                "operationTitle": "Search Alerts",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "705",
+              "left": "475",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "81637d94-09a6-4802-8ca1-6fb4e40a51b3"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Macro Value",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "iri": "/api/wf/api/dynamic-variable/?name={{vars.pullTimeMacro}}",
+                  "body": "",
+                  "method": "GET"
+                },
+                "version": "3.2.3",
+                "connector": "cyops_utilities",
+                "operation": "make_cyops_request",
+                "operationTitle": "FSR: Make FortiSOAR API Call",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "300",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "8c79a68b-ccf1-4e98-8b8d-ea5326dd8d62"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Is Data Only For mapping",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "option": "Yes, For Mapping",
+                    "step_iri": "/api/3/workflow_steps/81637d94-09a6-4802-8ca1-6fb4e40a51b3",
+                    "condition": "{{ vars.request.env_setup == true }}",
+                    "step_name": "Fetch Sample Alerts"
+                  },
+                  {
+                    "option": "No, For Ingestion",
+                    "default": true,
+                    "step_iri": "/api/3/workflow_steps/5866d3a4-f5d2-4d9b-aaed-7cc42c7233a4",
+                    "step_name": "Fetch Alerts"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "570",
+              "left": "300",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "5c2a6876-60b3-449c-9d3f-77b95ee737ea"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Record List",
+              "description": null,
+              "arguments": {
+                "record_data": "{% if (vars.steps.Fetch_Alerts.data)|type_debug=='list'%}{{vars.steps.Fetch_Alerts.data}}{% else %}[]{% endif %}"
+              },
+              "status": null,
+              "top": "840",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "41dc219e-ce98-49c3-9e48-7b846fc23866"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Set Result",
+              "description": null,
+              "arguments": {
+                "macro_name": "{{vars.pullTimeMacro}}",
+                "updated_last_pull_time": "{{vars.current_timestamp}}"
+              },
+              "status": null,
+              "top": "1110",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "8cbd83fc-8653-496c-8b49-83abbc441a02"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  },
+                  "_configuration_schema": "[\n    {\n        \"title\": \"Fetch Alerts Since\",\n        \"required\": true,\n        \"editable\": true,\n        \"visible\": true,\n        \"type\": \"datetime\",\n        \"name\": \"start_datetime\",\n        \"sub_title\": \"Select a date and time to retrieve alerts created or updated after the specified time.\",\n        \"tooltip\": \"Max time range is 7 days. Fetch Alerts Since can't be before 7 days from now.\"\n    },\n    {\n        \"title\": \"Alert Type\",\n        \"name\": \"alertType\",\n        \"type\": \"text\",\n        \"placeholder\": \"e.g. PotentiallyCompromisedHost\",\n        \"tooltip\": \"Specify the alert type to filter alerts.\",\n        \"required\": false,\n        \"editable\": true,\n        \"visible\": true\n    },\n    {\n        \"title\": \"Severity\",\n        \"required\": false,\n        \"editable\": true,\n        \"visible\": true,\n        \"type\": \"select\",\n        \"name\": \"severity\",\n        \"options\": [\n            \"Critical\",\n            \"High\",\n            \"Medium\",\n            \"Low\",\n            \"Info\"\n        ],\n        \"tooltip\": \"Select severity to filter alerts.\",\n        \"description\": \"Select severity to filter alerts retrieved based on your selection from the following options: \\n\\nCritical \\n\\nHigh \\n\\nMedium \\n\\nLow \\n\\nInfo\"\n    },\n    {\n        \"title\": \"Status\",\n        \"required\": false,\n        \"editable\": true,\n        \"visible\": true,\n        \"type\": \"select\",\n        \"name\": \"status\",\n        \"options\": [\n            \"Open\",\n            \"InProgress\",\n            \"Closed\"\n        ],\n        \"tooltip\": \"Select the status to filter alerts\",\n        \"description\": \"Select the status to filter alerts retrieved based on your selection from the following options:  \\n\\nOpen \\n\\nIn Progress \\n\\nClosed\"\n    },\n    {\n        \"title\": \"Alert Category\",\n        \"required\": false,\n        \"editable\": true,\n        \"visible\": true,\n        \"type\": \"select\",\n        \"name\": \"category\",\n        \"options\": [\n            \"Policy\",\n            \"Anomaly\",\n            \"Composite\"\n        ],\n        \"tooltip\": \"Select the category to filter alerts\",\n        \"description\": \"Select the category to filter alerts retrieved based on your selection from the following options:  \\n\\nPolicy \\n\\nAnomaly \\n\\nComposite\"\n    },\n    {\n        \"title\": \"Alert Sub Category\",\n        \"required\": false,\n        \"editable\": true,\n        \"visible\": true,\n        \"type\": \"select\",\n        \"name\": \"subCategory\",\n        \"options\": [\n            \"Compliance\",\n            \"Application\",\n            \"Cloud Activity\",\n            \"File\",\n            \"Machine\",\n            \"User\",\n            \"Platform\",\n            \"Kubernetes Activity\",\n            \"Registry\",\n            \"SystemCall\",\n            \"Threat Intel\",\n            \"Host Vulnerability\",\n            \"Container Vulnerability\"\n        ],\n        \"tooltip\": \"Select the sub category to filter alerts\",\n        \"description\": \"Select the sub category to filter alerts retrieved based on your selection from the following options:  \\n\\nCompliance \\n\\nApplication \\n\\nCloud Activity \\n\\nFile \\n\\nMachine \\n\\nUser \\n\\nPlatform \\n\\nKubernetes Activity \\n\\nRegistry \\n\\nSystemCall \\n\\nThreat Intel \\n\\nHost Vulnerability \\n\\nContainer Vulnerability\"\n    },\n    {\n        \"title\": \"Source\",\n        \"required\": false,\n        \"editable\": true,\n        \"visible\": true,\n        \"type\": \"select\",\n        \"name\": \"source\",\n        \"options\": [\n            \"AWS\",\n            \"Azure\",\n            \"GCP\",\n            \"Agent\",\n            \"OCI\",\n            \"K8s\"\n        ],\n        \"tooltip\": \"Select the source to filter alerts\",\n        \"description\": \"Select the source to filter alerts retrieved based on your selection from the following options:  \\n\\nAWS \\n\\nAzure \\n\\nGCP \\n\\nAgent \\n\\nKubernetes \\n\\nIdentity\"\n    }\n]"
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "300",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "63fa366c-183b-4ccc-85bb-cab3b02ecc83"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Step Output",
+              "description": null,
+              "arguments": {
+                "data": "{{vars.steps.Fetch_Sample_Alerts.data}}"
+              },
+              "status": null,
+              "top": "840",
+              "left": "475",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "39cad150-c8bf-4453-837e-cf41354e1a09"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Configuration -> Get Macro Value",
+              "targetStep": "/api/3/workflow_steps/8c79a68b-ccf1-4e98-8b8d-ea5326dd8d62",
+              "sourceStep": "/api/3/workflow_steps/f8702645-f5f8-4338-a5a4-a36d8517bfb7",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "138f21a4-adff-4358-a924-c9390440dab9"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Create Record -> Set Result",
+              "targetStep": "/api/3/workflow_steps/8cbd83fc-8653-496c-8b49-83abbc441a02",
+              "sourceStep": "/api/3/workflow_steps/4f134a86-39e2-4a02-a433-8dd37ea6f0f0",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "ef687fdb-d6df-4423-8299-cfd13f2889a0"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Extract Value From Response -> Is Data Only For mapping",
+              "targetStep": "/api/3/workflow_steps/5c2a6876-60b3-449c-9d3f-77b95ee737ea",
+              "sourceStep": "/api/3/workflow_steps/38a59708-9a91-4058-87c6-f576d7d5dbeb",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "aca9126e-3048-4aef-aaab-2d4902bc7070"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Fetch Alerts -> Record List",
+              "targetStep": "/api/3/workflow_steps/41dc219e-ce98-49c3-9e48-7b846fc23866",
+              "sourceStep": "/api/3/workflow_steps/5866d3a4-f5d2-4d9b-aaed-7cc42c7233a4",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "49ac7ebe-73bb-49c4-9357-07d76e09066a"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Fetch Sample Alerts -> Step Output",
+              "targetStep": "/api/3/workflow_steps/39cad150-c8bf-4453-837e-cf41354e1a09",
+              "sourceStep": "/api/3/workflow_steps/81637d94-09a6-4802-8ca1-6fb4e40a51b3",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "67c57f2b-63d4-4139-b643-73d1cbcd3aa5"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Macro Value -> Evaluate Time",
+              "targetStep": "/api/3/workflow_steps/38a59708-9a91-4058-87c6-f576d7d5dbeb",
+              "sourceStep": "/api/3/workflow_steps/8c79a68b-ccf1-4e98-8b8d-ea5326dd8d62",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "74c2af97-73b4-4e06-b304-0728cf2222d8"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Is Data Only For mapping -> Fetch Alerts",
+              "targetStep": "/api/3/workflow_steps/5866d3a4-f5d2-4d9b-aaed-7cc42c7233a4",
+              "sourceStep": "/api/3/workflow_steps/5c2a6876-60b3-449c-9d3f-77b95ee737ea",
+              "label": "No, For Ingestion",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "a0e8fc32-3904-49f4-a149-7971637ace59"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Is Data Only For mapping -> Fetch Sample Alerts",
+              "targetStep": "/api/3/workflow_steps/81637d94-09a6-4802-8ca1-6fb4e40a51b3",
+              "sourceStep": "/api/3/workflow_steps/5c2a6876-60b3-449c-9d3f-77b95ee737ea",
+              "label": "Yes, For Mapping",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "222f8d86-29a2-41e6-9b08-db0e4fc249f4"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Record List -> Create Record",
+              "targetStep": "/api/3/workflow_steps/4f134a86-39e2-4a02-a433-8dd37ea6f0f0",
+              "sourceStep": "/api/3/workflow_steps/41dc219e-ce98-49c3-9e48-7b846fc23866",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "0c13308b-bb47-4278-827a-b556017f1f44"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Configuration",
+              "targetStep": "/api/3/workflow_steps/f8702645-f5f8-4338-a5a4-a36d8517bfb7",
+              "sourceStep": "/api/3/workflow_steps/63fa366c-183b-4ccc-85bb-cab3b02ecc83",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "5ea50ccd-d5f7-430a-950f-e68c34f64781"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "cbb32c59-aaf6-455b-97ec-e20771f2d241",
+          "id": 3254,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "create",
+            "dataingestion",
+            "fetch",
+            "fortinet-forticnapp",
+            "Lacework",
+            "lacework-forticnapp"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Alert Entity Details",
+          "aliasName": null,
+          "tag": "#Lacework",
+          "description": "Retrieves details about an entity associated with the specified alert ID for which additional context is available.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1724751484,
+          "collection": "/api/3/workflow_collections/1180a7f6-2978-4a0f-aa61-2dad9b0e1e7a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/37b0f105-02bb-48ef-b745-879c3effa8cb",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Alert Entity Details",
+              "description": null,
+              "arguments": {
+                "name": "Lacework FortiCNAPP",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-forticnapp",
+                "operation": "get_alert_entity_details",
+                "operationTitle": "Get Alert Entity Details"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "6fdd5a9c-bf77-4020-970d-f7211cf0dc68"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "93af4752-cb68-4d16-a480-5a67e786a3c4",
+                "title": "Lacework FortiCNAPP: Get Alert Entity Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "37b0f105-02bb-48ef-b745-879c3effa8cb"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Alert Entity Details",
+              "targetStep": "/api/3/workflow_steps/6fdd5a9c-bf77-4020-970d-f7211cf0dc68",
+              "sourceStep": "/api/3/workflow_steps/37b0f105-02bb-48ef-b745-879c3effa8cb",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "2f7d5306-2667-4296-b894-203da5c72eaa"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "d8a40c6c-048a-443a-8674-c36e4c9bb442",
+          "id": 3255,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Lacework",
+            "lacework-forticnapp"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Lacework",
+    "lacework-forticnapp",
+    "dataingestion",
+    "fortinet-forticnapp",
+    "ingest",
+    "create",
+    "fetch"
+  ]
+}
