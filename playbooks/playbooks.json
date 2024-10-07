@@ -4,7 +4,7 @@
     {
       "@context": "/api/3/contexts/WorkflowCollection",
       "@type": "WorkflowCollection",
-      "name": "Sample - Lacework FortiCNAPP - 1.0.0",
+      "name": "Sample - Lacework FortiCNAPP - 2.0.0",
       "description": "Sample playbooks for \"Lacework FortiCNAPP\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
@@ -43,7 +43,7 @@
                 "name": "Lacework FortiCNAPP",
                 "config": "",
                 "params": [],
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "fortinet-forticnapp",
                 "operation": "add_comment_to_alert",
                 "operationTitle": "Add Comment to Alert"
@@ -134,7 +134,7 @@
                 "name": "Lacework FortiCNAPP",
                 "config": "",
                 "params": [],
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "fortinet-forticnapp",
                 "operation": "close_alert",
                 "operationTitle": "Close Alert"
@@ -231,7 +231,7 @@
                   "alertType": "",
                   "startTime": ""
                 },
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "fortinet-forticnapp",
                 "operation": "search_alerts",
                 "operationTitle": "Search Alerts",
@@ -323,7 +323,7 @@
                 "name": "Lacework FortiCNAPP",
                 "config": "",
                 "params": [],
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "fortinet-forticnapp",
                 "operation": "get_alert_details",
                 "operationTitle": "Get Alerts Details"
@@ -414,7 +414,7 @@
                 "name": "Lacework FortiCNAPP",
                 "config": "",
                 "params": [],
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "fortinet-forticnapp",
                 "operation": "get_alert_entities",
                 "operationTitle": "Get Alert Entities"
@@ -717,7 +717,7 @@
                   "startTime": "{{vars.last_pull_time}}",
                   "subCategory": "{{vars.subCategory}}"
                 },
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "fortinet-forticnapp",
                 "operation": "search_alerts",
                 "operationTitle": "Search Alerts",
@@ -750,7 +750,7 @@
                   "startTime": "{{vars.last_pull_time}}",
                   "subCategory": "{{vars.subCategory}}"
                 },
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "fortinet-forticnapp",
                 "operation": "search_alerts",
                 "operationTitle": "Search Alerts",
@@ -1026,7 +1026,7 @@
                 "name": "Lacework FortiCNAPP",
                 "config": "",
                 "params": [],
-                "version": "1.0.0",
+                "version": "2.0.0",
                 "connector": "fortinet-forticnapp",
                 "operation": "get_alert_entity_details",
                 "operationTitle": "Get Alert Entity Details"

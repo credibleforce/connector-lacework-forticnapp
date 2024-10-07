@@ -1,6 +1,6 @@
 {
-  "name": "fortinet-forticnapp_dev",
-  "version": "1.1.0",
+  "name": "fortinet-forticnapp",
+  "version": "2.0.0",
   "label": "Lacework FortiCNAPP",
   "description": "Lacework delivers end-to-end visibility into what\u2019s happening across your cloud environment, including detecting threats, vulnerabilities, misconfigurations, and unusual activity, so you can innovate with speed and safety.",
   "publisher": "",
@@ -919,7 +919,7 @@
       }
   ],
   "cs_compatible": true,
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/lacework-forticnapp/932/lacework-forticnapp-v1-0-0",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/2.0.0/lacework-forticnapp/932/lacework-forticnapp-v2-0-0",
   "ingestion_modes": [
       "scheduled"
   ]

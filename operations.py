@@ -176,7 +176,7 @@ def lql_query(config, params):
     response = lw.make_api_call(
         config=config, endpoint=endpoint, method='POST', data=payload)
 
-    return response
+    return response.get('data')
 
 
 def search_alerts(config, params):
