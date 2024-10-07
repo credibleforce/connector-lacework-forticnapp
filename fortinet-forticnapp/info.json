@@ -1,5 +1,5 @@
 {
-  "name": "fortinet-forticnapp",
+  "name": "fortinet-forticnapp_dev",
   "version": "2.0.0",
   "label": "Lacework FortiCNAPP",
   "description": "Lacework delivers end-to-end visibility into what\u2019s happening across your cloud environment, including detecting threats, vulnerabilities, misconfigurations, and unusual activity, so you can innovate with speed and safety.",
