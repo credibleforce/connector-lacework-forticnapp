@@ -179,6 +179,95 @@ def lql_query(config, params):
     return response.get('data')
 
 
+def search_host_vulnerabilities(config, params):
+    lw = Lacework(config)
+    filter_params = ["vulnId", "packageStatus",
+                     "props.kernel_status", "riskInfo.host_risk_factors_breakdown.internet_reachability",
+                     "riskInfo.host_risk_factors_breakdown.exploit_summary.exploit_public", "machineTags.Account",
+                     "machineTags.TenantId", "machineTags.SubscriptionId",
+                     "machineTags.ProjectId", "machineTags.InstanceId",
+                     "machineTags.AmiId", "machineTags.Hostname",
+                     "machineTags.Name", "fixInfo.fix_available", "severity"]
+    payload = {}
+    params = build_params(params)
+    filters = build_filters(params, filter_params)
+    if filters:
+        payload['filters'] = filters
+    timeFilter = {}
+    if params.get('startTime'):
+        timeFilter['startTime'] = params.get('startTime')
+    if params.get('endTime'):
+        timeFilter['endTime'] = params.get('endTime')
+    if timeFilter:
+        payload['timeFilter'] = timeFilter
+    if params.get('returns'):
+        payload['returns'] = str_to_list(params.get('returns'))
+    endpoint = 'Vulnerabilities/Hosts/search'
+    response = lw.make_api_call(
+        config=config, endpoint=endpoint, method='POST', data=payload)
+    if 'message' in response and response.get('message') == 'No content':
+        return response
+    return lw.get_all_records(config, response)
+
+
+def search_container_vulnerabilities(config, params):
+    lw = Lacework(config)
+    filter_params = ["vulnId", "status", "severity", "packageStatus",
+                     "imageRiskInfo.factors_breakdown.internet_reachability",
+                     "imageRiskInfo.factors_breakdown.active_containers",
+                     "imageRiskInfo.factors_breakdown.exploit_summary.exploit_public",
+                     "imageId",
+                     "fixInfo.fix_available"]
+    payload = {}
+    params = build_params(params)
+    filters = build_filters(params, filter_params)
+    if filters:
+        payload['filters'] = filters
+    timeFilter = {}
+    if params.get('startTime'):
+        timeFilter['startTime'] = params.get('startTime')
+    if params.get('endTime'):
+        timeFilter['endTime'] = params.get('endTime')
+    if timeFilter:
+        payload['timeFilter'] = timeFilter
+    if params.get('returns'):
+        payload['returns'] = str_to_list(params.get('returns'))
+    endpoint = 'Vulnerabilities/Containers/search'
+    response = lw.make_api_call(
+        config=config, endpoint=endpoint, method='POST', data=payload)
+    if 'message' in response and response.get('message') == 'No content':
+        return response
+    return lw.get_all_records(config, response)
+
+
+def search_configuration(config, params):
+    lw = Lacework(config)
+    filter_params = ["account.AccountId", "account.projectId", "account.subscriptionId", "account.tenantId", "id", "region", "resource",
+                     "severity", "status"]
+    payload = {}
+    params = build_params(params)
+    filters = build_filters(params, filter_params)
+    if filters:
+        payload['filters'] = filters
+    timeFilter = {}
+    if params.get('startTime'):
+        timeFilter['startTime'] = params.get('startTime')
+    if params.get('endTime'):
+        timeFilter['endTime'] = params.get('endTime')
+    if timeFilter:
+        payload['timeFilter'] = timeFilter
+    if params.get('returns'):
+        payload['returns'] = str_to_list(params.get('returns'))
+    if params.get('dataset'):
+        payload['dataset'] = params.get('dataset')
+    endpoint = 'Configs/ComplianceEvaluations/search'
+    response = lw.make_api_call(
+        config=config, endpoint=endpoint, method='POST', data=payload)
+    if 'message' in response and response.get('message') == 'No content':
+        return response
+    return lw.get_all_records(config, response)
+
+
 def search_alerts(config, params):
     lw = Lacework(config)
     filter_params = ["alertId", "alertType", "severity",
@@ -265,6 +354,9 @@ def check_health(config):
 
 operations = {
     'lql_query': lql_query,
+    'search_host_vulnerabilities': search_host_vulnerabilities,
+    'search_container_vulnerabilities': search_container_vulnerabilities,
+    'search_configuration': search_configuration,
     'search_alerts': search_alerts,
     'get_alert_details': get_alert_details,
     'get_alert_entities': get_alert_entities,

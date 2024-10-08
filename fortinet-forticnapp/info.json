@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "label": "Lacework FortiCNAPP",
   "description": "Lacework delivers end-to-end visibility into what\u2019s happening across your cloud environment, including detecting threats, vulnerabilities, misconfigurations, and unusual activity, so you can innovate with speed and safety.",
-  "publisher": "",
+  "publisher": "Fortinet",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "category": "Cloud Security",
@@ -102,6 +102,553 @@
             "tooltip": "Specify the LQL formatted query (e.g. {source {LW_CFG_AWS_EC2_SECURITY_GROUPS} return {RESOURCE_CONFIG}}).",
             "description": "(Optional) Specify the LQL formatted query (e.g. {source {LW_CFG_AWS_EC2_SECURITY_GROUPS} return {RESOURCE_CONFIG}})."
           }
+        ]
+      },
+      {
+        "operation": "search_host_vulnerabilities",
+        "title": "Search Host Vulnerabilities",
+        "description": "Retrieves a detailed list of vulnerability state based on filters like start time, account ID, severity, status, and other filter criteria that you have specified.",
+        "category": "investigation",
+        "annotation": "search_host_vulnerabilities",
+        "output_schema": [
+            {
+                "cveProps": {},
+                "cveRiskInfo": {},
+                "cveRiskScore": {},
+                "endTime": "",
+                "evalCtx": {},
+                "evalGuid": {},
+                "featureKey": {},
+                "fixInfo": {},
+                "hostRiskInfo": {},
+                "hostRiskScore": "",
+                "machineTags": {},
+                "mid": "",
+                "packageStatus": "",
+                "props": {},
+                "region": "",
+                "riskInfo": {},
+                "riskScore": "",
+                "severity": "",
+                "startTime": "",
+                "status": "",
+                "vulnId": ""
+            }
+        ],
+        "enabled": true,
+        "parameters": [
+            {
+                "title": "Start Time",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "datetime",
+                "name": "startTime",
+                "tooltip": "By default, the value is 24 hours before the current time. Difference between start time and end time should not be greater than 7 Days.",
+                "description": "(Optional) Specify the start time for search. Supported time formats: yyyy-MM-dd, yyyy-MM-ddTHH, yyyy-MM-ddTHH:mm:ssZ, yyyy-MM-ddTHH:mm:ss.SSSZ. By default, the value is 24 hours before the current time. NOTE: Difference between start time and end time should not be greater than 7 Days."
+            },
+            {
+                "title": "End Time",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "datetime",
+                "name": "endTime",
+                "tooltip": "By default, the value is current time. Difference between start time and end time should not be greater than 7 Days.",
+                "description": "(Optional) Specify the end time for search. Supported time formats: yyyy-MM-dd, yyyy-MM-ddTHH, yyyy-MM-ddTHH:mm:ssZ, yyyy-MM-ddTHH:mm:ss.SSSZ. By default, the value is current time. NOTE: Difference between start time and end time should not be greater than 7 Days."
+            },
+            {
+                "title": "Package Status",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "packageStatus",
+                "options": [
+                    "ACTIVE",
+                    "INACTIVE"
+                ],
+                "tooltip": "Select the package status to filter vulnerability data",
+                "description": "Select the package status to filter config vulnerability retrieved. You can select from the following options:  \n\nACTIVE \n\nINACTIVE "
+            },
+            {
+                "title": "Kernel Status",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "props.kernel_status",
+                "options": [
+                    "Active",
+                    "Inactive"
+                ],
+                "tooltip": "Select the kernel status to filter vulnerability data",
+                "description": "Select the kernel status to filter config vulnerability retrieved. You can select from the following options:  \n\nACTIVE \n\nINACTIVE "
+            },
+            {
+                "title": "Internet Reachability",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "riskInfo.host_risk_factors_breakdown.internet_reachability",
+                "options": [
+                    "Direct"
+                ],
+                "tooltip": "Select the internet reachability to filter vulnerability data",
+                "description": "Select the internet reachability to filter config vulnerability retrieved. You can select from the following options:  \n\nDirect "
+            },
+            {
+                "title": "Public Exploit Available",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "riskInfo.host_risk_factors_breakdown.exploit_summary.exploit_public",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "tooltip": "Select the internet reachability to filter vulnerability data",
+                "description": "Select the internet reachability to filter config vulnerability retrieved. You can select from the following options:  \n\nDirect "
+            },
+            {
+                "title": "Fix Available",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "options": [
+                    "0",
+                    "1"
+                ],
+                "name": "fixInfo.fix_available",
+                "tooltip": "Specify vulnerabilities with fix available to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify vulnerabilities with fix available to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "AWS Account ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "machineTags.Account",
+                "tooltip": "Specify an AWS Account ID to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify an AWS Account ID to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "Azure Tenant ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "machineTags.TenantId",
+                "tooltip": "Specify an Azure Tenant ID to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify an Azure Tenant ID to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "Azure Subscription ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "machineTags.SubscriptionId",
+                "tooltip": "Specify an Azure Subscription ID to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify an Azure Subscription ID to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "GCP Project ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "machineTags.ProjectId",
+                "tooltip": "Specify an GCP Project ID to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify an GCP Project ID to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "AWS Instance ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "machineTags.InstanceId",
+                "tooltip": "Specify an AWS instance ID to retrieve the specified vulnerability details (e.g. i-11112421523).",
+                "description": "(Optional) Specify an AWS instance ID to retrieve the specified vulnerability details (e.g. i-11112421523)."
+            },
+            {
+                "title": "AWS AMI ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "machineTags.AmiId",
+                "tooltip": "Specify an AWS AMI ID to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify an AWS AMI ID to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "Machine Hostname",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "machineTags.Hostname",
+                "tooltip": "Specify a machine hostname to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify a machine hostname to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "Machine Name",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "machineTags.Name",
+                "tooltip": "Specify a machine name to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify a machine name to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "Severity",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "severity",
+                "options": [
+                    "Critical",
+                    "High",
+                    "Medium",
+                    "Low",
+                    "Info"
+                ],
+                "tooltip": "Select severity to filter vulnerabilities.",
+                "description": "(Optional) Select severity to filter vulnerabilities retrieved. You can select from the following options:  \n\nCritical \n\nHigh \n\nMedium \n\nLow \n\nInfo "
+            },
+            {
+                "title": "Returns",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "returns",
+                "tooltip": "Specify comma-separated list of top-level fields of the response schema you want to receive. e.g. alertId, alertName, alertType, alertInfo.",
+                "description": "(Optional) Specify comma-separated list of top-level fields of the response schema to receive. For example: alertId, alertName, alertType, alertInfo. "
+            }
+        ]
+      },
+      {
+        "operation": "search_container_vulnerabilities",
+        "title": "Search Container Vulnerabilities",
+        "description": "Retrieves a detailed list of vulnerability state based on filters like start time, account ID, severity, status, and other filter criteria that you have specified.",
+        "category": "investigation",
+        "annotation": "search_container_vulnerabilities",
+        "output_schema": [
+            {
+                "cveProps": {},
+                "evalCtx": {},
+                "evalGuid": {},
+                "featureKey": {},
+                "featureProps": {},
+                "packageStatus": "",
+                "fixInfo": {},
+                "imageId": "",
+                "riskInfo": {},
+                "riskScore": "",
+                "cveRiskScore": "",
+                "cveRiskInfo": "",
+                "imageRiskInfo": {},
+                "imageRiskScore": "",
+                "severity": "",
+                "startTime": "",
+                "status": "",
+                "vulnId": ""
+            }
+        ],
+        "enabled": true,
+        "parameters": [
+            {
+                "title": "Start Time",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "datetime",
+                "name": "startTime",
+                "tooltip": "By default, the value is 24 hours before the current time. Difference between start time and end time should not be greater than 7 Days.",
+                "description": "(Optional) Specify the start time for search. Supported time formats: yyyy-MM-dd, yyyy-MM-ddTHH, yyyy-MM-ddTHH:mm:ssZ, yyyy-MM-ddTHH:mm:ss.SSSZ. By default, the value is 24 hours before the current time. NOTE: Difference between start time and end time should not be greater than 7 Days."
+            },
+            {
+                "title": "End Time",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "datetime",
+                "name": "endTime",
+                "tooltip": "By default, the value is current time. Difference between start time and end time should not be greater than 7 Days.",
+                "description": "(Optional) Specify the end time for search. Supported time formats: yyyy-MM-dd, yyyy-MM-ddTHH, yyyy-MM-ddTHH:mm:ssZ, yyyy-MM-ddTHH:mm:ss.SSSZ. By default, the value is current time. NOTE: Difference between start time and end time should not be greater than 7 Days."
+            },
+            {
+                "title": "Package Status",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "packageStatus",
+                "options": [
+                    "ACTIVE",
+                    "INACTIVE"
+                ],
+                "tooltip": "Select the package status to filter vulnerability data",
+                "description": "Select the package status to filter config vulnerability retrieved. You can select from the following options:  \n\nACTIVE \n\nINACTIVE "
+            },
+            {
+                "title": "Internet Reachability",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "imageRiskInfo.factors_breakdown.internet_reachability",
+                "options": [
+                    "Direct"
+                ],
+                "tooltip": "Select the internet reachability to filter vulnerability data",
+                "description": "Select the internet reachability to filter config vulnerability retrieved. You can select from the following options:  \n\nDirect "
+            },
+            {
+                "title": "Public Exploit Available",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "imageRiskInfo.factors_breakdown.exploit_summary.exploit_public",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "tooltip": "Select the internet reachability to filter vulnerability data",
+                "description": "Select the internet reachability to filter config vulnerability retrieved. You can select from the following options:  \n\nDirect "
+            },
+            {
+                "title": "Image ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "imageId",
+                "tooltip": "Specify an AWS Account ID to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify an AWS Account ID to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "Fix Available",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "options": [
+                    0,
+                    1
+                ],
+                "name": "fixInfo.fix_available",
+                "tooltip": "Specify vulnerabilities with fix available to retrieve the specified vulnerability details.",
+                "description": "(Optional) Specify vulnerabilities with fix available to retrieve the specified vulnerability details."
+            },
+            {
+                "title": "Severity",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "severity",
+                "options": [
+                    "Critical",
+                    "High",
+                    "Medium",
+                    "Low",
+                    "Info"
+                ],
+                "tooltip": "Select severity to filter vulnerabilities.",
+                "description": "(Optional) Select severity to filter vulnerabilities retrieved. You can select from the following options:  \n\nCritical \n\nHigh \n\nMedium \n\nLow \n\nInfo "
+            },
+            {
+                "title": "Returns",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "returns",
+                "tooltip": "Specify comma-separated list of top-level fields of the response schema you want to receive. e.g. alertId, alertName, alertType, alertInfo.",
+                "description": "(Optional) Specify comma-separated list of top-level fields of the response schema to receive. For example: alertId, alertName, alertType, alertInfo. "
+            }
+        ]
+      },
+      {
+        "operation": "search_configuration",
+        "title": "Search Configuration",
+        "description": "Retrieves a detailed list of config state based on filters like policy ID, start time, account ID, severity, status, and other filter criteria that you have specified.",
+        "category": "investigation",
+        "annotation": "search_configuration",
+        "output_schema": [
+            {
+                "account": {},
+                "evalType": "",
+                "id": "",
+                "reason": "",
+                "recommendation": "",
+                "region": "",
+                "reportTime": "",
+                "resource": "",
+                "section": "",
+                "severity": "",
+                "status": ""
+            }
+        ],
+        "enabled": true,
+        "parameters": [
+            {
+                "title": "Start Time",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "datetime",
+                "name": "startTime",
+                "tooltip": "By default, the value is 24 hours before the current time. Difference between start time and end time should not be greater than 7 Days.",
+                "description": "(Optional) Specify the start time for search. Supported time formats: yyyy-MM-dd, yyyy-MM-ddTHH, yyyy-MM-ddTHH:mm:ssZ, yyyy-MM-ddTHH:mm:ss.SSSZ. By default, the value is 24 hours before the current time. NOTE: Difference between start time and end time should not be greater than 7 Days."
+            },
+            {
+                "title": "End Time",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "datetime",
+                "name": "endTime",
+                "tooltip": "By default, the value is current time. Difference between start time and end time should not be greater than 7 Days.",
+                "description": "(Optional) Specify the end time for search. Supported time formats: yyyy-MM-dd, yyyy-MM-ddTHH, yyyy-MM-ddTHH:mm:ssZ, yyyy-MM-ddTHH:mm:ss.SSSZ. By default, the value is current time. NOTE: Difference between start time and end time should not be greater than 7 Days."
+            },
+            {
+                "title": "Dataset",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "dataset",
+                "options": [
+                    "AwsCompliance",
+                    "AzureCompliance",
+                    "GcpCompliance",
+                    "K8sCompliance"
+                ],
+                "tooltip": "Select the dataset to filter config data",
+                "description": "Select the source to filter config data retrieved. You can select from the following options:  \n\nAwsCompliance \n\nAzureCompliance \n\nGcpCompliance \n\nK8sCompliance "
+            },
+            {
+                "title": "AWS Account ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "account.AccountId",
+                "tooltip": "Specify an AWS Account ID to retrieve the specified config details.",
+                "description": "(Optional) Specify an AWS Account ID to retrieve the specified config details."
+            },
+            {
+                "title": "Azure Tenant ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "account.tenantId",
+                "tooltip": "Specify an Azure Tenant ID to retrieve the specified config details.",
+                "description": "(Optional) Specify an Azure Tenant ID to retrieve the specified config details."
+            },
+            {
+                "title": "Azure Subscription ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "account.subscriptionId",
+                "tooltip": "Specify an Azure Subscription ID to retrieve the specified config details.",
+                "description": "(Optional) Specify an Azure Subscription ID to retrieve the specified config details."
+            },
+            {
+                "title": "GCP Project ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "account.projectId",
+                "tooltip": "Specify an GCP Project ID to retrieve the specified config details.",
+                "description": "(Optional) Specify an GCP Project ID to retrieve the specified config details."
+            },
+            {
+                "title": "Policy ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "id",
+                "tooltip": "Specify a policy ID to retrieve the specified config details (e.g. lacework-global-634).",
+                "description": "(Optional) Specify a policy ID to retrieve the specified config details (e.g. lacework-global-634)."
+            },
+            {
+                "title": "Region",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "region",
+                "tooltip": "Specify a resgion to retrieve the specified config details (e.g. us-east-1).",
+                "description": "(Optional) Specify a region ID to retrieve the specified config details (e.g. us-east-1)."
+            },
+            {
+                "title": "Resource ID",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "resource",
+                "tooltip": "Specify a resource ID to retrieve the specified config details (e.g. arn:aws:kms:us-east-1:111111111:key/xxxx-xxx-xxxx-xxxxx).",
+                "description": "(Optional) Specify an alert ID to retrieve the specified config details (e.g. arn:aws:kms:us-east-1:111111111:key/xxxx-xxx-xxxx-xxxxx)."
+            },
+            {
+                "title": "Severity",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "severity",
+                "options": [
+                    "Critical",
+                    "High",
+                    "Medium",
+                    "Low",
+                    "Info"
+                ],
+                "tooltip": "Select severity to filter alerts.",
+                "description": "(Optional) Select severity to filter alerts retrieved. You can select from the following options:  \n\nCritical \n\nHigh \n\nMedium \n\nLow \n\nInfo "
+            },
+            {
+                "title": "Status",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "status",
+                "options": [
+                    "Compliant",
+                    "NonCompliant"
+                ],
+                "tooltip": "Select the status to filter config data",
+                "description": "(Optional) Select the status to filter config data retrieved. You can select from the following options:  \n\nCompliant \n\nNonCompliant "
+            },
+            {
+                "title": "Returns",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "returns",
+                "tooltip": "Specify comma-separated list of top-level fields of the response schema you want to receive. e.g. alertId, alertName, alertType, alertInfo.",
+                "description": "(Optional) Specify comma-separated list of top-level fields of the response schema to receive. For example: alertId, alertName, alertType, alertInfo. "
+            }
         ]
       },
       {
