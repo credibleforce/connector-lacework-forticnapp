@@ -42,6 +42,7 @@ class Lacework:
 
     def validate_token(self, connector_config):
         ts_now = time()
+        # generate new token
         if not connector_config.get('token'):
             logger.info("Token does not exist")
             token_resp = self.generate_token()
@@ -51,10 +52,8 @@ class Lacework:
             update_connector_config(connector_info['connector_name'], connector_info['connector_version'],
                                     connector_config,
                                     connector_config['config_id'])
-
-            expires = connector_config['expiresAt']
-            logger.info("Token is valid till {0}".format(expires))
             return "Bearer {0}".format(connector_config.get('token'))
+        # check token expiry
         else:
             expires = connector_config['expiresAt']
             expires_ts = self.convert_ts_epoch(expires)
@@ -207,12 +206,13 @@ def lql_query(config, params):
 def search_host_vulnerabilities(config, params):
     lw = Lacework(config)
     filter_params = ["vulnId", "packageStatus",
-                     "props.kernel_status", "riskInfo.host_risk_factors_breakdown.internet_reachability",
-                     "riskInfo.host_risk_factors_breakdown.exploit_summary.exploit_public", "machineTags.Account",
-                     "machineTags.TenantId", "machineTags.SubscriptionId",
-                     "machineTags.ProjectId", "machineTags.InstanceId",
-                     "machineTags.AmiId", "machineTags.Hostname",
-                     "machineTags.Name", "fixInfo.fix_available", "severity"]
+                     "props__kernel_status", "riskInfo__host_risk_factors_breakdown__internet_reachability",
+                     "riskInfo__host_risk_factors_breakdown__exploit_summary__exploit_public", "machineTags__Account",
+                     "machineTags__TenantId", "machineTags__SubscriptionId",
+                     "machineTags__ProjectId", "machineTags__InstanceId",
+                     "machineTags__AmiId", "machineTags__Hostname",
+                     "machineTags__Name", "fixInfo__fix_available", "severity"]
+    filter_params = [ param.replace("__", ".") for param in filter_params ]
     payload = {}
     params = build_params(params)
     filters = build_filters(params, filter_params)
@@ -248,11 +248,12 @@ def search_host_vulnerabilities(config, params):
 def search_container_vulnerabilities(config, params):
     lw = Lacework(config)
     filter_params = ["vulnId", "status", "severity", "packageStatus",
-                     "imageRiskInfo.factors_breakdown.internet_reachability",
-                     "imageRiskInfo.factors_breakdown.active_containers",
-                     "imageRiskInfo.factors_breakdown.exploit_summary.exploit_public",
+                     "imageRiskInfo__factors_breakdown__internet_reachability",
+                     "imageRiskInfo__factors_breakdown__active_containers",
+                     "imageRiskInfo__factors_breakdown__exploit_summary__exploit_public",
                      "imageId",
-                     "fixInfo.fix_available"]
+                     "fixInfo__fix_available"]
+    filter_params = [param.replace("__", ".") for param in filter_params]
     payload = {}
     params = build_params(params)
     filters = build_filters(params, filter_params)
@@ -286,8 +287,9 @@ def search_container_vulnerabilities(config, params):
 
 def search_configuration(config, params):
     lw = Lacework(config)
-    filter_params = ["account.AccountId", "account.projectId", "account.subscriptionId", "account.tenantId", "id", "region", "resource",
+    filter_params = ["account__AccountId", "account__projectId", "account__subscriptionId", "account__tenantId", "id", "region", "resource",
                      "severity", "status"]
+    filter_params = [param.replace("__", ".") for param in filter_params]
     payload = {}
     params = build_params(params)
     filters = build_filters(params, filter_params)
@@ -330,7 +332,7 @@ def search_alerts(config, params):
     filters = build_filters(params, filter_params)
     if filters:
         payload['filters'] = filters
-        
+
     timeFilter = {}
     if params.get('startTime'):
         timeFilter['startTime'] = params.get('startTime')
