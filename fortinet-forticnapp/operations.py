@@ -56,8 +56,8 @@ class Lacework:
             connector_config['expiresAt'] = token_resp['expiresAt']
             connector_info = connector_config.get('connector_info')
             update_connector_config(connector_info['connector_name'], connector_info['connector_version'],
-                                     connector_config,
-                                     connector_config['config_id'])
+                                    connector_config,
+                                    connector_config['config_id'])
 
             return "Bearer {0}".format(connector_config.get('token'))
         else:
@@ -342,8 +342,8 @@ def check_health(config):
             config['token'] = token_resp.get('token')
             config['expiresAt'] = token_resp.get('expiresAt')
             connector_info = config.get('connector_info')
-            update_connnector_config(connector_info['connector_name'], connector_info['connector_version'], config,
-                                     config['config_id'])
+            update_connector_config(connector_info['connector_name'], connector_info['connector_version'], config,
+                                    config['config_id'])
             return True
         else:
             token_resp = lw.validate_token(config)
