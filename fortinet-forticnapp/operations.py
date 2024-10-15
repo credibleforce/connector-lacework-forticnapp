@@ -55,7 +55,7 @@ class Lacework:
             connector_config['token'] = token_resp['token']
             connector_config['expiresAt'] = token_resp['expiresAt']
             connector_info = connector_config.get('connector_info')
-            update_connnector_config(connector_info['connector_name'], connector_info['connector_version'],
+            update_connector_config(connector_info['connector_name'], connector_info['connector_version'],
                                      connector_config,
                                      connector_config['config_id'])
 
