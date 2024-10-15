@@ -167,6 +167,7 @@ def lql_query(config, params):
         options = {}
         options["limit"] = params.get('limit')
         payload['options'] = options
+
     if params.get('startTime'):
         argument = {}
         argument['name'] = 'StartTimeRange'
@@ -217,11 +218,21 @@ def search_host_vulnerabilities(config, params):
     filters = build_filters(params, filter_params)
     if filters:
         payload['filters'] = filters
+
     timeFilter = {}
     if params.get('startTime'):
         timeFilter['startTime'] = params.get('startTime')
+    else:
+        now = datetime.utcnow()
+        start_time = (now - timedelta(hours=24)).strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        timeFilter['startTime'] = start_time
     if params.get('endTime'):
         timeFilter['endTime'] = params.get('endTime')
+    else:
+        now = datetime.utcnow()
+        end_time = now.strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        timeFilter['endTime'] = end_time
+
     if timeFilter:
         payload['timeFilter'] = timeFilter
     if params.get('returns'):
@@ -247,11 +258,20 @@ def search_container_vulnerabilities(config, params):
     filters = build_filters(params, filter_params)
     if filters:
         payload['filters'] = filters
+
     timeFilter = {}
     if params.get('startTime'):
         timeFilter['startTime'] = params.get('startTime')
+    else:
+        now = datetime.utcnow()
+        start_time = (now - timedelta(hours=24)).strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        timeFilter['startTime'] = start_time
     if params.get('endTime'):
         timeFilter['endTime'] = params.get('endTime')
+    else:
+        now = datetime.utcnow()
+        end_time = now.strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        timeFilter['endTime'] = end_time
     if timeFilter:
         payload['timeFilter'] = timeFilter
     if params.get('returns'):
@@ -273,11 +293,20 @@ def search_configuration(config, params):
     filters = build_filters(params, filter_params)
     if filters:
         payload['filters'] = filters
+
     timeFilter = {}
     if params.get('startTime'):
         timeFilter['startTime'] = params.get('startTime')
+    else:
+        now = datetime.utcnow()
+        start_time = (now - timedelta(hours=24)).strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        timeFilter['startTime'] = start_time
     if params.get('endTime'):
         timeFilter['endTime'] = params.get('endTime')
+    else:
+        now = datetime.utcnow()
+        end_time = now.strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        timeFilter['endTime'] = end_time
     if timeFilter:
         payload['timeFilter'] = timeFilter
     if params.get('returns'):
@@ -301,11 +330,20 @@ def search_alerts(config, params):
     filters = build_filters(params, filter_params)
     if filters:
         payload['filters'] = filters
+        
     timeFilter = {}
     if params.get('startTime'):
         timeFilter['startTime'] = params.get('startTime')
+    else:
+        now = datetime.utcnow()
+        start_time = (now - timedelta(hours=24)).strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        timeFilter['startTime'] = start_time
     if params.get('endTime'):
         timeFilter['endTime'] = params.get('endTime')
+    else:
+        now = datetime.utcnow()
+        end_time = now.strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        timeFilter['endTime'] = end_time
     if timeFilter:
         payload['timeFilter'] = timeFilter
     if params.get('returns'):
