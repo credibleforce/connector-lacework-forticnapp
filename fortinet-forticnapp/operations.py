@@ -6,7 +6,7 @@
 
 import requests
 from time import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from .constants import *
 from connectors.core.utils import update_connector_config
 from connectors.core.connector import get_logger, ConnectorError
@@ -43,14 +43,7 @@ class Lacework:
     def validate_token(self, connector_config):
         ts_now = time()
         if not connector_config.get('token'):
-            logger.error(
-                'Error occurred while connecting server: Unauthorized')
-            raise ConnectorError(
-                'Error occurred while connecting server: Unauthorized')
-        expires = connector_config['expiresAt']
-        expires_ts = self.convert_ts_epoch(expires)
-        if ts_now > float(expires_ts):
-            logger.info("Token expired at {0}".format(expires))
+            logger.info("Token does not exist")
             token_resp = self.generate_token()
             connector_config['token'] = token_resp['token']
             connector_config['expiresAt'] = token_resp['expiresAt']
@@ -59,10 +52,26 @@ class Lacework:
                                     connector_config,
                                     connector_config['config_id'])
 
-            return "Bearer {0}".format(connector_config.get('token'))
-        else:
+            expires = connector_config['expiresAt']
             logger.info("Token is valid till {0}".format(expires))
             return "Bearer {0}".format(connector_config.get('token'))
+        else:
+            expires = connector_config['expiresAt']
+            expires_ts = self.convert_ts_epoch(expires)
+            if ts_now > float(expires_ts):
+                logger.info("Token expired at {0}".format(expires))
+                token_resp = self.generate_token()
+                connector_config['token'] = token_resp['token']
+                connector_config['expiresAt'] = token_resp['expiresAt']
+                connector_info = connector_config.get('connector_info')
+                update_connector_config(connector_info['connector_name'], connector_info['connector_version'],
+                                        connector_config,
+                                        connector_config['config_id'])
+
+                return "Bearer {0}".format(connector_config.get('token'))
+            else:
+                logger.info("Token is valid till {0}".format(expires))
+                return "Bearer {0}".format(connector_config.get('token'))
 
     def make_api_call(self, config=None, endpoint=None, params=None, method='GET', data=None, is_token_call=False, is_next_page=False):
         if is_next_page:
@@ -163,11 +172,26 @@ def lql_query(config, params):
         argument['name'] = 'StartTimeRange'
         argument['value'] = params.get('startTime')
         arguments.append(argument)
+    else:
+        now = datetime.utcnow()
+        start_time = (now - timedelta(hours=24)).strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        argument = {}
+        argument['name'] = 'StartTimeRange'
+        argument['value'] = start_time
+        arguments.append(argument)
     if params.get('endTime'):
         argument = {}
         argument['name'] = 'EndTimeRange'
         argument['value'] = params.get('endTime')
         arguments.append(argument)
+    else:
+        now = datetime.utcnow()
+        end_time = now.strftime(f"%Y-%m-%dT%H:%M:%S.{str(now.microsecond)[:3]}Z")
+        argument = {}
+        argument['name'] = 'EndTimeRange'
+        argument['value'] = end_time
+        arguments.append(argument)
+
 
     if arguments:
         payload["arguments"] = arguments
