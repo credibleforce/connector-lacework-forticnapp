@@ -8,7 +8,7 @@ import requests
 from time import time
 from datetime import datetime
 from .constants import *
-from connectors.core.utils import update_connnector_config
+from connectors.core.utils import update_connector_config
 from connectors.core.connector import get_logger, ConnectorError
 
 logger = get_logger('fortinet-forticnapp')
