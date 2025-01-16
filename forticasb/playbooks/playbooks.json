@@ -1,0 +1,14 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    
+  ],
+  "exported_tags": [
+    "FortiCASB",
+    "dataingestion",
+    "fortinet-forticnapp",
+    "ingest",
+    "create",
+    "fetch"
+  ]
+}
